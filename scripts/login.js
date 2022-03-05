@@ -5,7 +5,6 @@ const BtnLogin = document.querySelector('#btn-login');
 const LoginUrl = 'https://rs-ticket-control.herokuapp.com/api/auth/login';
 
 
-
 function login() {
     fetch(LoginUrl, {
         method: 'POST',
@@ -21,8 +20,11 @@ function login() {
             return response.json();
         }
         return Promise.reject(response);
-    }).then(function(data) {
-        console.log(data);
+    }).then(function(userData) {
+        localStorage.setItem('token', userData.token);
+        localStorage.setItem('userRole', userData.user.role);
+        goHome();
+        console.log(userData);
     }).catch(function(error) {
         console.warn('Something went wrong.', error);
     });
@@ -33,3 +35,9 @@ BtnLogin.addEventListener('click', (event) => {
 });
 
 BtnLogin.addEventListener('click', login);
+
+
+//Go to go to Home
+const goHome = () => {
+    location.href = "../html/home.html";
+}
