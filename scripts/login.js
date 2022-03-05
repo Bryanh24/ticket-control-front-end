@@ -28,4 +28,7 @@ function login() {
     });
 }
 //events
+BtnLogin.addEventListener('click',(event)=>{
+    event.preventDefault();
+});
 BtnLogin.addEventListener('click', login);
