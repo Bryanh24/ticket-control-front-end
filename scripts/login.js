@@ -10,8 +10,8 @@ function login() {
     fetch(LoginUrl, {
         method: 'POST',
         body: JSON.stringify({
-            user: TbUserName.value,
-            pass: TbPassword.value
+            userName: TbUserName.value,
+            password: TbPassword.value
         }),
         headers: {
             "Content-type": "application/json; charset=utf-8"
@@ -28,7 +28,8 @@ function login() {
     });
 }
 //events
-BtnLogin.addEventListener('click',(event)=>{
+BtnLogin.addEventListener('click', (event) => {
     event.preventDefault();
 });
+
 BtnLogin.addEventListener('click', login);
